@@ -1,0 +1,31 @@
+key = input() // take string input 
+validate(key) // length should match 8 bytes exactly and only allowed chars
+
+key64 = binaryconverter(key) // ASCII utf-8 to binary string
+
+key56 = paritydrop_64_56(key64) 
+
+// drop every 8th bit by rearranging the 
+// bits according to standard parity drop box 
+
+right_half_bits, left_half_bits = divide(key56) // 56 --> 28 , 28
+
+for (16 times)
+{
+   
+   // if round number is 1,2,9,16 shift_left should shift one bit 
+   // other rounds shift two bits
+
+   left_input  = shift_left(left_half_bits, round_number)
+   right_input = shift_left(right_half_bits, round_number)
+
+   // i'th round key
+
+   keyQueue[i] = compression_D_box_56_48(left_input, right_input)
+
+}
+   
+   
+
+
+
